@@ -20,6 +20,8 @@ jupyterhub_admin_users:
 # Whitelist of jupyterhub users.
 jupyterhub_users:
   - iracooke
+  - tester
+  - rhuerlimann
   - grader
   - student1
   - student2
@@ -182,18 +184,11 @@ use_nbgrader: true
 # are run. If OAuth is used, passwords must be disabled for those users.
 nbgrader_courses:
   - {
-      course_id: "GG3101",
+      course_id: "BC5101",
       owner: "iracooke",
       graders: ["iracooke"],
       port: 5005
     }
-  - {
-      course_id: "BC2023",
-      owner: "iracooke",
-      graders: ["iracooke"],
-      port: 5006
-    }
-
 # ------------------------------------------------------------------------------
 # cull_idle_servers
 # ------------------------------------------------------------------------------
