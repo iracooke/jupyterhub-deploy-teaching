@@ -1,0 +1,17 @@
+---
+- include_vars: student_info.yml
+
+- name: create system accounts for all students
+  user: name={{ item.username }} password={{ item.password|password_hash('sha512','lkj45') }}
+  with_items: "{{ student_info }}"
+
+- name: add all students to course
+  command: /opt/conda/bin/nbgrader db student add {{ item.username }} --first-name={{ item.first }} --last-name={{ item.last }} --email={{ item.email }} chdir="/home/iracooke/nbgrader/BC2303"
+  become: yes
+  become_user: iracooke
+  with_items: "{{ student_info }}"
+
+- name: install student nbgrader config files
+  template: src=nbgrader_config.py.j2 dest=/home/{{ item.username }}/nbgrader_config.py owner={{ item.username }} group={{ item.username }} mode=700
+  with_items:
+    - "{{ student_info }}"
