@@ -184,7 +184,7 @@ use_nbgrader: true
 # are run. If OAuth is used, passwords must be disabled for those users.
 nbgrader_courses:
   - {
-      course_id: "BC2303",
+      course_id: "BC2023",
       owner: "iracooke",
       graders: ["iracooke"],
       port: 5005

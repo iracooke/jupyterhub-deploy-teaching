@@ -7,8 +7,19 @@
 service ssh restart
 ```
 
+# Run the ansible deploy scripts
 
 
+
+```bash
+ansible-playbook users.yml
+ansible-playbook deploy.yml
+ansible-playbook students.yml
+```
+
+# Notify students by email of their passwords
+
+for id in $(grep 'Tutor' BC2023Students.tsv | awk '{print $1}' | tr '\n' ' ');do ./email_passwords.py  $id | osascript - ;done
 
 # Certificate renewal
 
