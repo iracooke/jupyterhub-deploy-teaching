@@ -59,6 +59,6 @@ target/
 customize.yml
 security/
 hosts
-users/vars/
-students/vars/
-BC2023Students.tsv
+roles/users/vars/
+roles/students/vars/
+BC2023Students*

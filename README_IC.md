@@ -33,3 +33,16 @@ systemctl stop nginx
 certbot-auto renew --no-self-upgrade
 systemctl start nginx
 ```
+
+#Install additional software
+
+
+
+# Email passwords to all students
+
+for sid in $(tail -n +3 BC2023Students.tsv | awk '{print $1}' | tr '\n' ' ');do ./email_passwords.py $sid | osascript -;done
+
+
+for sid in $(cat tricky_students.tsv | awk '{print $1}' | sed 's/\///' | tr '\n' ' ');do ./email_passwords.py $sid | sed 's/\\//'  | osascript -;done
+
+for sid in $(cat BC2023Students_ids2.txt | tr '\n' ' ');do ./email_passwords.py $sid | osascript - ;done

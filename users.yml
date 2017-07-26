@@ -1,0 +1,15 @@
+---
+# The playbook deploys JupyterHub.
+# This file would be equivalent to a `sites.yml` file in Ansible terms.
+
+- hosts: jupyterhub_hosts
+  roles:
+    - users
+
+  tasks:
+    - assert:
+        that: (ansible_version.major, ansible_version.minor) >= (2, 1)
+        msg: require ansible >= 2.1, found {{ansible_version.full}}
+
+    - command: echo "$PATH"
+      register: default_path
